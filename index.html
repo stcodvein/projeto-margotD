@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#070c1b" />
+  <title>PROJETO MARGOT — Crônica Interativa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="theme-indigo">
+  <!-- Textura cinematográfica e iluminação atmosférica -->
+  <div class="film-grain" aria-hidden="true"></div>
+  <div class="ambient-glow" aria-hidden="true"></div>
+
+  <!-- Barra de HUD Superior Minimalista de Jogo Indie -->
+  <header class="game-hud" id="game-hud">
+    <div class="hud-left">
+      <span class="hud-kicker" id="hud-chapter-code">CAP. 00</span>
+      <span class="hud-divider">/</span>
+      <span class="hud-title" id="hud-chapter-name">PRÓLOGO</span>
+    </div>
+
+    <div class="hud-progress" aria-label="Progresso da jornada">
+      <button class="chapter-pip active" data-target="prologue-cover" title="Prólogo"></button>
+      <button class="chapter-pip" data-target="level-1" title="Nível I"></button>
+      <button class="chapter-pip" data-target="interlude-1" title="Interlúdio I"></button>
+      <button class="chapter-pip" data-target="level-2" title="Nível II"></button>
+      <button class="chapter-pip" data-target="interlude-2" title="Interlúdio II"></button>
+    </div>
+
+    <div class="hud-right">
+      <div class="hud-score" title="Fragmentos coletados">
+        <span class="score-diamond">◆</span>
+        <span id="global-score">00</span>
+      </div>
+      <button id="sound-toggle" class="icon-btn" aria-label="Alternar efeitos sonoros" title="Som">
+        <span class="sound-wave on">♪</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Cortina Cinematográfica de Transição -->
+  <div class="scene-curtain" id="scene-curtain" aria-hidden="true">
+    <div class="curtain-inner">
+      <p class="curtain-roman" id="curtain-roman">I</p>
+      <h2 class="curtain-title" id="curtain-title">A ÓRBITA</h2>
+      <div class="curtain-line"></div>
+    </div>
+  </div>
+
+  <!-- PALCO PRINCIPAL -->
+  <main id="stage">
+
+    <!-- =========================================================
+         00. CAPA DO PRÓLOGO — ABERTURA CINEMATOGRÁFICA
+         ========================================================= -->
+    <section id="prologue-cover" class="scene active" data-theme="theme-indigo" data-code="CAP. 00" data-name="PRÓLOGO">
+      <div class="cover-orbit-ring ring-outer" aria-hidden="true"></div>
+      <div class="cover-orbit-ring ring-inner" aria-hidden="true"></div>
+
+      <div class="cover-composition">
+        <div class="cover-meta">
+          <span class="tag-line">EDIÇÃO INTERATIVA • ARQUIVO N.º 01</span>
+        </div>
+
+        <div class="cover-visual-frame">
+          <img src="assets/images/prologue_cosmos.jpg" alt="Astrolábio celeste do Projeto Margot" class="cover-art" />
+          <div class="frame-corner tl"></div>
+          <div class="frame-corner tr"></div>
+          <div class="frame-corner bl"></div>
+          <div class="frame-corner br"></div>
+        </div>
+
+        <div class="cover-typography">
+          <p class="eyebrow">UM UNIVERSO CONSTRUÍDO EM TRÊSATOS</p>
+          <h1 class="main-title">PROJETO<br><em>Margot</em></h1>
+          <p class="cover-subtitle">
+            Entre constelações que guardam segredos, páginas sublinhadas à meia-noite e acordes que ainda aguardam o silêncio certo.
+          </p>
+
+          <button class="btn-primary magnetic-btn" id="start-journey-btn">
+            <span class="btn-text">INICIAR EXPERIÊNCIA</span>
+            <span class="btn-arrow">→</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         01. PRÓLOGO — APRESENTAÇÃO NARRATIVA E MANIFESTO
+         ========================================================= -->
+    <section id="prologue-story" class="scene" data-theme="theme-indigo" data-code="CAP. 00" data-name="MANIFESTO">
+      <div class="editorial-spread">
+        <!-- Bloco Assimétrico 1 -->
+        <div class="spread-hero-grid">
+          <div class="spread-text-block">
+            <span class="chapter-index">PRÓLOGO // O COMEÇO DO MAPA</span>
+            <h2 class="editorial-heading">Nem toda história começa na primeira página.</h2>
+            <p class="editorial-lead">
+              Algumas começam como uma pequena órbita — um detalhe notado de longe, um riso que muda a gravidade da sala, uma curiosidade que pede para ser decifrada com calma.
+            </p>
+          </div>
+
+          <figure class="editorial-collage">
+            <img src="assets/images/prologue_artifact.jpg" alt="Artefato botânico estelar" class="collage-main-img" />
+            <figcaption class="collage-caption">
+              <span>FIG. 01</span>
+              <p>Registro estelar: coordenadas de algo raro em movimento.</p>
+            </figcaption>
+            <div class="floating-note">
+              “Para descobrir o que há no centro, atravesse as três atmosferas.”
+            </div>
+          </figure>
+        </div>
+
+        <!-- Pequena Coleção / Manifesto Interativo -->
+        <div class="manifesto-archive">
+          <div class="archive-header">
+            <span class="archive-label">COLEÇÃO DE FRAGMENTOS — TOQUE PARA REVELAR</span>
+            <div class="archive-rule"></div>
+          </div>
+
+          <div class="archive-tabs" role="tablist">
+            <button class="archive-tab active" data-fragment="0" role="tab">I. A Órbita</button>
+            <button class="archive-tab" data-fragment="1" role="tab">II. A Palavra</button>
+            <button class="archive-tab" data-fragment="2" role="tab">III. O Pulso</button>
+          </div>
+
+          <div class="archive-display" id="archive-display">
+            <div class="archive-numeral" id="archive-numeral">01</div>
+            <div class="archive-body">
+              <h3 id="archive-title">O CÉU NÃO É SILENCIOSO</h3>
+              <p id="archive-text">
+                No primeiro ato, o espaço não é vazio: está repleto de mensageiros teimosos, flechas fora de rota e estrelas que exigem precisão.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="spread-footer">
+          <button class="btn-secondary" data-nav="prologue-cover">← Voltar</button>
+          <button class="btn-primary" id="to-level-1-btn">
+            <span>ENTRAR NO NÍVEL I</span>
+            <span class="btn-arrow">→</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         02. NÍVEL I — JOGO DOS CUPIDOS (ESTILO ASTEROIDS / AMONG US)
+         ========================================================= -->
+    <section id="level-1" class="scene scene-game" data-theme="theme-indigo" data-code="NÍVEL I" data-name="ÓRBITA DOS CUPIDOS">
+      <div class="minigame-shell">
+        <!-- Painel de Telemetria do Jogo -->
+        <div class="telemetry-bar">
+          <div class="telemetry-group">
+            <span class="tele-label">ALVOS</span>
+            <span class="tele-value"><strong id="l1-score">0</strong> / <span id="l1-target">12</span></span>
+          </div>
+          <div class="telemetry-progress-track">
+            <div class="telemetry-progress-fill" id="l1-progress-bar"></div>
+          </div>
+          <div class="telemetry-group">
+            <span class="tele-label">ESCUDO</span>
+            <div class="lives-display" id="l1-lives" aria-label="Vidas restantes">
+              <span class="heart active">♥</span>
+              <span class="heart active">♥</span>
+              <span class="heart active">♥</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Palco Canvas -->
+        <div class="canvas-viewport" id="l1-viewport">
+          <canvas id="cupid-canvas"></canvas>
+
+          <!-- Overlay Inicial / Instruções -->
+          <div class="game-overlay active" id="l1-start-overlay">
+            <div class="overlay-box">
+              <span class="overlay-kicker">SISTEMA DE DEFESA CELESTE</span>
+              <h3>Interceptação de Cupidos</h3>
+              <p>
+                Cupidos rebeldes cruzam o setor com flechas carregadas. Mantenha a nave intacta e neutralize <strong id="l1-target-text">12</strong> alvos para abrir o próximo capítulo.
+              </p>
+              <div class="controls-hint">
+                <span><strong>Celular:</strong> Arraste para mover • Toque/Botão para disparar</span>
+                <span><strong>PC:</strong> Setas/WASD • Espaço ou Clique</span>
+              </div>
+              <button class="btn-primary" id="l1-start-btn">INICIAR MISSÃO</button>
+            </div>
+          </div>
+
+          <!-- Overlay de Derrota -->
+          <div class="game-overlay" id="l1-gameover-overlay">
+            <div class="overlay-box">
+              <span class="overlay-kicker danger">ESCUDO ROMPIDO</span>
+              <h3>A Órbita Ficou Instável</h3>
+              <p>Os cupidos atravessaram o perímetro antes da calibração final. Respire fundo e tente novamente.</p>
+              <button class="btn-primary" id="l1-retry-btn">REINICIAR NÍVEL I</button>
+            </div>
+          </div>
+
+          <!-- Overlay de Vitória -->
+          <div class="game-overlay" id="l1-victory-overlay">
+            <div class="overlay-box">
+              <span class="overlay-kicker success">SETOR ESTABILIZADO</span>
+              <h3>Constelação Conquistada</h3>
+              <p>Todos os alvos necessários foram interceptados. A atmosfera começa a mudar para tinta e papel.</p>
+              <button class="btn-primary" id="l1-next-btn">AVANÇAR PARA INTERLÚDIO I →</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controles Táteis Dedicados para Celular -->
+        <div class="touch-controls" id="l1-touch-controls">
+          <div class="touch-pad-left">
+            <button class="touch-btn" id="btn-left" aria-label="Mover para esquerda">◀</button>
+            <button class="touch-btn" id="btn-right" aria-label="Mover para direita">▶</button>
+          </div>
+          <div class="touch-hint-center">ARRASTE NA TELA OU USE OS CONTROLES</div>
+          <button class="touch-fire-btn" id="btn-fire" aria-label="Disparar">DISPARAR</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         03. INTERLÚDIO I — TRANSIÇÃO LITERÁRIA (ROXO-ESCURO)
+         ========================================================= -->
+    <section id="interlude-1" class="scene" data-theme="theme-violet" data-code="INTERLÚDIO I" data-name="ENTRELINHAS">
+      <div class="interlude-layout">
+        <div class="interlude-visual-column">
+          <div class="manuscript-frame">
+            <img src="assets/images/interlude1_manuscript.jpg" alt="Manuscrito iluminado em tom violeta" />
+            <div class="manuscript-stamp">ARQUIVO II • TINTA VIOLETA</div>
+          </div>
+        </div>
+
+        <div class="interlude-narrative-column">
+          <span class="chapter-index">INTERLÚDIO I // PAUSA ENTRE AS ESTRELAS</span>
+          <h2 class="editorial-heading">Quando o ruído do espaço cessa, sobra a voz escrita.</h2>
+          
+          <blockquote class="literary-epigraph">
+            “Tudo o que não invento é falso.”
+            <cite>— Manoel de Barros</cite>
+          </blockquote>
+
+          <p class="editorial-body">
+            Deixamos para trás os reflexos rápidos da órbita para entrar em um território mais silencioso e denso. Aqui, cada frase funciona como uma chave, e cada metáfora guarda uma intenção oculta.
+          </p>
+          <p class="editorial-body">
+            No próximo desafio, observe além da superfície das palavras: leia o subtexto, reconheça quem as escreveu e decifre o que elas realmente querem dizer.
+          </p>
+
+          <div class="interlude-actions">
+            <button class="btn-primary" id="to-level-2-btn">
+              <span>ABRIR O DESAFIO LITERÁRIO</span>
+              <span class="btn-arrow">→</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         04. NÍVEL II — DESAFIO LITERÁRIO (3 FASES INTERATIVAS)
+         ========================================================= -->
+    <section id="level-2" class="scene" data-theme="theme-violet" data-code="NÍVEL II" data-name="CÂMARA LITERÁRIA">
+      <div class="literary-game-container">
+        <!-- Cabeçalho do Manuscrito -->
+        <div class="manuscript-header">
+          <div class="folio-tag">MANUSCRITO <span id="l2-phase-num">I</span> DE <span id="l2-phase-total">3</span></div>
+          <div class="folio-dots" id="l2-dots">
+            <span class="folio-dot active"></span>
+            <span class="folio-dot"></span>
+            <span class="folio-dot"></span>
+          </div>
+          <div class="folio-score">ACERTOS: <strong id="l2-score">0</strong>/3</div>
+        </div>
+
+        <!-- Página do Desafio -->
+        <article class="manuscript-page" id="l2-page">
+          <div class="page-watermark" aria-hidden="true">❧</div>
+          <span class="question-category" id="l2-category">INTERPRETAÇÃO DE PASSAGEM</span>
+
+          <div class="excerpt-box">
+            <p class="excerpt-text" id="l2-excerpt"></p>
+            <span class="excerpt-source" id="l2-source"></span>
+          </div>
+
+          <h3 class="literary-prompt" id="l2-prompt"></h3>
+
+          <div class="choices-list" id="l2-choices"></div>
+
+          <!-- Painel de Feedback e Explicação -->
+          <div class="feedback-drawer" id="l2-feedback" aria-live="polite">
+            <div class="feedback-status" id="l2-feedback-status"></div>
+            <p class="feedback-explanation" id="l2-feedback-text"></p>
+            <button class="btn-primary" id="l2-next-phase-btn">PRÓXIMA PÁGINA →</button>
+          </div>
+        </article>
+
+        <!-- Tela de Conclusão do Nível II -->
+        <div class="literary-complete" id="l2-complete" hidden>
+          <span class="chapter-index">LEITURA CONCLUÍDA</span>
+          <h2 class="editorial-heading">As páginas revelaram seu sentido.</h2>
+          <p class="editorial-lead" id="l2-summary-text"></p>
+          <div class="complete-emblem">✦ ❧ ✦</div>
+          <button class="btn-primary" id="l2-finish-btn">
+            <span>SEGUIR PARA O INTERLÚDIO II</span>
+            <span class="btn-arrow">→</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         05. INTERLÚDIO II — PREPARAÇÃO PARA O ÚLTIMO CAPÍTULO (VERMELHO-ESCURO)
+         ========================================================= -->
+    <section id="interlude-2" class="scene" data-theme="theme-crimson" data-code="INTERLÚDIO II" data-name="O LIMIAR ESCARLATE">
+      <div class="crimson-finale-layout">
+        <div class="crimson-visual-wrap">
+          <img src="assets/images/interlude2_crimson.jpg" alt="Ondas sonoras em atmosfera vermelho-escura" class="crimson-art" />
+          <div class="pulse-ring" aria-hidden="true"></div>
+        </div>
+
+        <div class="crimson-content">
+          <span class="chapter-index">INTERLÚDIO II // O ÚLTIMO LIMIAR</span>
+          <h2 class="editorial-heading">Depois da órbita e da palavra, resta aquilo que se ouve de olhos fechados.</h2>
+
+          <p class="editorial-lead">
+            A luz se aprofunda em carmim. Tudo o que foi reunido até aqui — a precisão do primeiro gesto e a atenção às entrelinhas — prepara o terreno para o capítulo final.
+          </p>
+
+          <p class="editorial-body">
+            O último ato pertence à <strong>música</strong>: ao ritmo que não precisa de tradução e às notas que encerram a travessia.
+          </p>
+
+          <!-- Estrutura Reservada para o Nível III (Sem minigame fictício) -->
+          <div class="level-3-placeholder" id="level-3-slot" data-chapter-status="reserved">
+            <div class="placeholder-header">
+              <span class="status-dot"></span>
+              <span>NÍVEL III — CAPÍTULO MUSICAL</span>
+            </div>
+            <p class="placeholder-note">
+              Estrutura reservada para o ato final. Em breve, este espaço ganhará som, compasso e desfecho.
+            </p>
+          </div>
+
+          <div class="crimson-footer">
+            <button class="btn-secondary" id="restart-experience-btn">↺ Rever desde o Prólogo</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/cupidGame.js"></script>
+  <script src="js/literaryGame.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
